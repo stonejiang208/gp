@@ -1,0 +1,26 @@
+// -*- IDL -*-
+//===========================================================================
+/* TIME-stamp: <2012-10-31 23:46:36 by jiangtao> */
+
+/* @file Client_Node.idl
+ * $Id: Client_Node.idl 2013/03/13 14:28:19 jiangtao Exp $
+ *
+ * @author:Jiangtao<jiangtao@tao-studio.net>
+ */
+//===========================================================================
+
+#ifndef CLIENT_NODE_IDL_
+#define CLIENT_NODE_IDL_
+#include "Common.idl"
+module GP
+{
+  interface Client_Node
+  {
+    oneway void  message(
+      in User_Id sender,
+      in string a_message,
+      in Message_Info info);
+  };
+};
+
+#endif /* CLIENT_NODE_IDL_ */

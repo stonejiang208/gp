@@ -1,0 +1,51 @@
+// -*- IDL -*-
+//===========================================================================
+/* Time-stamp: <2013-11-24 18:38:12 by jiangtao> */
+
+/* @file Game_Platform.idl
+ * $Id: Game_Platform.idl 2012/10/31 15:40:01 jiangtao Exp $
+ *
+ * @author:Jiangtao<jiangtao@tao-studio.net>
+ */
+//===========================================================================
+
+#ifndef GAME_PLATFORM_IDL_
+#define GAME_PLATFORM_IDL_
+#include "Common.idl"
+#include "Client_Node.idl"
+#include "Server_Node.idl"
+module GP
+{
+  interface User_Node;
+  interface Platform_Node;
+  struct Login_Param
+  {
+    long vendor_id;
+    long product_id;
+    Octet_Seq key;
+  };
+  interface Game_Platform
+  {
+    User_Node power_on();
+
+    User_Node login (
+      in Login_Param param,
+      in Client_Node client,
+      in string user_name,
+      in string user_passowd)
+      raises (Invalid_Password);
+
+    Platform_Node activate(
+      in Login_Param param,
+      in Server_Node server)
+      raises (Invalid_Password);
+     
+    long enter_backgroud (in User_Id a_id)
+       raises (Invalid_User);
+
+    long enter_foregroud (in User_Id a_id)
+       raises (Invalid_User);
+
+  };
+};
+#endif /* GAME_PLATFORM_IDL_ */

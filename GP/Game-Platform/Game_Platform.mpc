@@ -1,0 +1,98 @@
+// -*- MPC -*- 
+//===========================================================================
+//* Time-stamp: <2013-07-16 07:29:28 by jiangtao> 
+
+// @file Game_Platform.mpc
+// * $Id: Game_Platform.mpc 2012/10/31 16:13:38 jiangtao Exp $
+// *
+// * @authorJiangtao <jiangtao@tao-studio.net>
+//===========================================================================
+
+project(Game_Platform_IDL):taoidldefaults,amh,ami{
+	custom_only =1
+  IDL_Files{
+	idlflags +=  -GH \
+	      -Wb,stub_export_macro=Game_Platform_Export \
+              -Wb,stub_export_include=Game_Platform_export.h \
+	      -Wb,skel_export_macro=Game_Platform_Skel_Export \
+              -Wb,skel_export_include=Game_Platform_Skel_export.h
+    Common.idl
+		User_Node.idl
+		Platform_Node.idl 
+		Game_Platform.idl
+	
+  }
+	IDL_Files{
+		idlflags +=  -GC \
+	  -Wb,skel_export_macro=Game_Platform_Export \
+    -Wb,skel_export_include=Game_Platform_export.h \
+	  -Wb,stub_export_macro=Game_Platform_Export \
+    -Wb,stub_export_include=Game_Platform_export.h
+		Client_Node.idl  
+		Server_Node.idl
+	
+  }
+}
+
+
+project(Game_Platform):orbsvcslib,portableserver,messaging,ami{
+   sharedname    = Game_Platform
+   dynamicflags += GAME_PLATFORM_BUILD_DLL
+   after        += Game_Platform_IDL
+   libout        = $(GP_ROOT)/lib
+   dllout        = $(GP_ROOT)/lib
+   IDL_Files {
+   }
+	 
+   Source_Files {
+		 CommonC.cpp
+		 User_NodeC.cpp
+     Game_PlatformC.cpp
+		 Platform_NodeC.cpp
+   }
+	 Source_Files {
+		 Client_NodeC.cpp
+		 Client_NodeS.cpp
+		 Server_NodeC.cpp
+		 Server_NodeS.cpp
+	 }
+   Inline_Files {
+   }
+   Template_Files {
+   }
+   Resource_Files {
+   }
+}
+
+
+project(Game_Platform_Skel):orbsvcslib,portableserver,messaging,ami{
+   sharedname    = Game_Platform_Skel
+   dynamicflags += GAME_PLATFORM_SKEL_BUILD_DLL
+   after        += Game_Platform
+   libs         += Game_Platform
+   libpaths     += $(GP_ROOT)/lib
+   libout        = $(GP_ROOT)/lib
+   dllout        = $(GP_ROOT)/lib
+   
+
+   IDL_Files {
+   }
+   Source_Files {
+		 CommonS.cpp
+		 User_NodeS.cpp
+     Game_PlatformS.cpp
+		 Platform_NodeS.cpp
+   }
+   Header_Files {
+   }
+   Inline_Files {
+   }
+   Template_Files {
+   }
+   Resource_Files {
+   }
+   
+}
+
+
+

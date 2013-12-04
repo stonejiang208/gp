@@ -1,0 +1,26 @@
+// -*- IDL -*-
+//===========================================================================
+/* TIME-stamp: <2012-10-31 23:46:36 by jiangtao> */
+
+/* @file Platform_Node.idl
+ * $Id: Platform_Node.idl 2013/07/15 23:21:04 jiangtao Exp $
+ *
+ * @author:Jiangtao<jiangtao@tao-studio.net>
+ */
+//===========================================================================
+
+#ifndef PLATFORM_NODE_IDL_
+#define PLATFORM_NODE_IDL_
+
+#include "Common.idl"
+
+module GP
+{
+  interface Platform_Node
+  {
+    void message (in Room_Id a_room, in User_Id a_user,in string a_message);
+    void deactivate();
+  };
+};
+
+#endif /* PLATFORM_NODE_IDL_ */

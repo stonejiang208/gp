@@ -1,0 +1,38 @@
+// -*- IDL -*-
+//===========================================================================
+/* TIME-stamp: <2012-10-31 23:46:36 by jiangtao> */
+
+/* @file Common.idl
+ * $Id: Common.idl 2012/10/31 16:02:45 jiangtao Exp $
+ *
+ * @author:Jiangtao<jiangtao@tao-studio.net>
+ */
+//===========================================================================
+
+#ifndef COMMON_IDL_
+#define COMMON_IDL_
+#include "tao/TimeBase.pidl"
+module GP
+{
+  typedef sequence<octet> Octet_Seq;
+  typedef unsigned long Location_Id;
+  typedef unsigned long Room_Id;
+  typedef unsigned long User_Id;
+  typedef sequence<Location_Id> Location_List;
+  typedef sequence<Room_Id> Room_List;
+  typedef sequence<User_Id> User_List;
+  struct User_Basic_Info
+  {
+    User_Id   id;
+  };
+
+  exception Invalid_Password {};
+  exception Invalid_User {};
+  exception Room_Already_Exist {};
+  struct Message_Info
+  {
+    TimeBase::TimeT source_time;
+    
+  };
+};
+#endif /* COMMON_IDL_ */

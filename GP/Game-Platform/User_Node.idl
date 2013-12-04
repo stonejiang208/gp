@@ -1,0 +1,36 @@
+// -*- IDL -*-
+//===========================================================================
+/* TIME-stamp: <2012-10-31 23:46:36 by jiangtao> */
+
+/* @file User_Node.idl
+ * $Id: User_Node.idl 2013/03/13 14:28:56 jiangtao Exp $
+ *
+ * @author:Jiangtao<jiangtao@tao-studio.net>
+ */
+//===========================================================================
+
+#ifndef USER_NODE_IDL_
+#define USER_NODE_IDL_
+#include "Common.idl"
+module GP
+{
+  interface User_Node
+  {
+    void message(in Room_Id a_id,
+                 in string a_message);
+    void enter_room(in Room_Id new_room_id);
+    void leave_room();
+    void quit();
+
+    Room_Id create_room (in Location_Id current_location_id);
+    Location_List get_server_list();
+    Room_List get_room_list(in Location_Id current_location_id);
+    User_List get_user_list (in Room_Id current_room_id);
+    User_Basic_Info get_user_info (in User_Id a_user_id);
+    Room_Id  current_room();
+    User_Id  get_user_id();
+    readonly attribute User_Basic_Info  info;  
+  };
+};
+
+#endif /* USER_NODE_IDL_ */
