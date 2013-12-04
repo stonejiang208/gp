@@ -31,8 +31,7 @@ module GP
   exception Room_Already_Exist {};
   struct Message_Info
   {
-    TimeBase::TimeT source_time;
-    
+    TimeBase::TimeT source_time;    
   };
 };
 #endif /* COMMON_IDL_ */
