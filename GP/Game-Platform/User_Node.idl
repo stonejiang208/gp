@@ -20,16 +20,7 @@ module GP
                  in string a_message);
     void enter_room(in Room_Id new_room_id);
     void leave_room();
-    void quit();
-
-    Room_Id create_room (in Location_Id current_location_id);
-    Location_List get_server_list();
-    Room_List get_room_list(in Location_Id current_location_id);
-    User_List get_user_list (in Room_Id current_room_id);
-    User_Basic_Info get_user_info (in User_Id a_user_id);
-    Room_Id  current_room();
-    User_Id  get_user_id();
-    readonly attribute User_Basic_Info  info;  
+    void quit();     
   };
 };
 

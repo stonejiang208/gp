@@ -18,34 +18,12 @@ module GP
 {
   interface User_Node;
   interface Platform_Node;
-  struct Login_Param
-  {
-    long vendor_id;
-    long product_id;
-    Octet_Seq key;
-  };
+
   interface Game_Platform
   {
-    User_Node power_on();
-
-    User_Node login (
-      in Login_Param param,
-      in Client_Node client,
-      in string user_name,
-      in string user_passowd)
-      raises (Invalid_Password);
-
-    Platform_Node activate(
-      in Login_Param param,
-      in Server_Node server)
-      raises (Invalid_Password);
-     
-    long enter_backgroud (in User_Id a_id)
-       raises (Invalid_User);
-
-    long enter_foregroud (in User_Id a_id)
-       raises (Invalid_User);
-
+    User_Node create_user(in string user_uuid);
+    //todo:
+    //application  
   };
 };
 #endif /* GAME_PLATFORM_IDL_ */

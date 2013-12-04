@@ -32,7 +32,6 @@ project(Game_Platform_IDL):taoidldefaults,amh,ami{
   }
 }
 
-
 project(Game_Platform):orbsvcslib,portableserver,messaging,ami{
    sharedname    = Game_Platform
    dynamicflags += GAME_PLATFORM_BUILD_DLL
@@ -61,7 +60,6 @@ project(Game_Platform):orbsvcslib,portableserver,messaging,ami{
    Resource_Files {
    }
 }
-
 
 project(Game_Platform_Skel):orbsvcslib,portableserver,messaging,ami{
    sharedname    = Game_Platform_Skel
