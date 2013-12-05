@@ -1,0 +1,30 @@
+
+// -*- MPC -*- 
+//===========================================================================
+//* Time-stamp: <2013-09-02 16:29:40 by jiangtao> 
+
+// @file server.mpc
+// * $Id: server.mpc 2012/11/02 14:42:04 jiangtao Exp $
+// *
+// * @authorJiangtao <jiangtao@tao-studio.net>
+//===========================================================================
+
+project(server):boost_base,namingexe,iortable,utils,svc_utils,bidir_giop,messaging,\
+amh,ami,strategies,tc,tc_iiop{
+  exename = server
+  after += Game_Platform_Skel
+ // after += Bomb_Utils
+  exeout = $(GP_ROOT)/lib
+  libpaths += $(GP_ROOT)/lib
+  includes += $(GP_ROOT) 
+  includes += .
+  includes += $(GP_ROOT)/Game-Platform
+  includes += $(GP_ROOT)/Bomb_Utils
+  libs  += Game_Platform Game_Platform_Skel 
+ // libs  += Bomb_Utils
+  macros += JSON_IS_AMALGAMATION	
+  IDL_Files{
+  }
+}
+
+
