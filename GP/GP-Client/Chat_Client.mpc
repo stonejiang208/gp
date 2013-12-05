@@ -1,0 +1,35 @@
+// -*- MPC -*- 
+//===========================================================================
+//* Time-stamp: <2013-11-24 14:15:53 by jiangtao> 
+
+// @file GP_Client.mpc
+// * $Id: GP_Client.mpc 2013/03/13 06:21:08 jiangtao Exp $
+// *
+// * @authorJiangtao <jiangtao@tao-studio.net>
+//===========================================================================
+
+
+
+project(GP_Client):taolib,orbsvcsexe,portableserver,naming,anytypecode,bidir_giop,messaging{
+   sharedname   = GP_Client
+  dynamicflags = GP_CLIENT_BUILD_DLL
+   specific(vc9,vc10,vc11) {
+     useofmfc=2
+   }
+   specific(gnu){
+   }
+   specific(prop:microsoft){
+  }
+  after += Game_Platform
+  dllout = $(GP_ROOT)/lib
+  libout = $(GP_ROOT)/lib
+  libpaths += $(GP_ROOT)/lib
+  
+  includes += $(GP_ROOT)/Game-Platform
+  libs  += Game_Platform
+ 
+   IDL_Files{
+	   
+   }
+
+}
