@@ -1,1 +1,1 @@
-
+%TAO_ROOT%\orbsvcs\Naming_Service\tao_cosnaming.exe -ORBDebugLevel 10 -ORBListenEndpoints iiop://192.168.1.5:12345
