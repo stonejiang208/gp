@@ -38,7 +38,6 @@ AMH_Game_Platform_i::~AMH_Game_Platform_i()
     ACE_TEXT ("(%t|%T) AMH_Game_Platform_i::~AMH_Game_Platform_i()\n")));
 }
 
-
 void AMH_Game_Platform_i::orb(CORBA :: ORB_ptr o)
 {
   this->orb_ = CORBA::ORB::_duplicate (o);
@@ -49,7 +48,6 @@ CORBA::ORB_ptr AMH_Game_Platform_i::orb()
   return CORBA::ORB::_duplicate (this->orb_.in());
 }
 
-
 void AMH_Game_Platform_i::poa(PortableServer :: POA_ptr p)
 {
   this->poa_ = PortableServer::POA::_duplicate (p);
@@ -59,7 +57,6 @@ PortableServer::POA_ptr AMH_Game_Platform_i::poa()
 {
   return PortableServer::POA::_duplicate (poa_.in());
 }
-
 
 void AMH_Game_Platform_i::create_user(
   GP::AMH_Game_PlatformResponseHandler_ptr _tao_rh,
@@ -77,7 +74,6 @@ void AMH_Game_Platform_i::create_user(
   GP::User_Node_var user_node = GP::User_Node::_narrow (object.in());
   _tao_rh->create_user (user_node.in());
 }
-
 
 void AMH_Game_Platform_i::finalize()
 {
