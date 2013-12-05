@@ -5,7 +5,7 @@ project(test):namingexe,messaging{
   includes += $(GP_ROOT) 
   includes += .
   includes += $(GP_ROOT)/Game-Platform  
-  libs  += Game_Platform   
+  libs  += Game_Platform   GP_Client
   macros += JSON_IS_AMALGAMATION	
   IDL_Files{
   }
