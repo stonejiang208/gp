@@ -18,18 +18,7 @@ module GP
 {
   interface Server_Node
   {
-    oneway void message (
-      in Room_Id a_room,
-      in User_Id a_user,
-      in string a_message);
-
-    Room_Id create_room ();
-
-    Room_List get_room_list();
-    User_List get_user_list (in Room_Id current_room_id);
-
-    readonly attribute Location_Id  loc;
-    attribute string                loc_name;
+   
   };
 };
 

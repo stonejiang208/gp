@@ -18,8 +18,7 @@ module GP
 {
   interface Platform_Node
   {
-    void message (in Room_Id a_room, in User_Id a_user,in string a_message);
-    void deactivate();
+ 
   };
 };
 
