@@ -40,14 +40,20 @@ public:
   virtual ~Lobby();
  
 public:
+  static TimeBase::TimeT get_timestamp();
   void set_platform (AMH_Game_Platform_i* p);
   void bind_user_node (GP::User_Id id, AMH_User_Node_i* user_node);
   void unbind_user_node (GP::User_Id id);
+
+public:
+  void message (GP::Room_Id room_id, const char* msg);
 private:
   AMH_Game_Platform_i*   platform_;
   User_Node_Map          user_node_map_;
+
+ 
 };
 
 typedef ACE_Singleton<Lobby, ACE_Null_Mutex> LOBBY;
-TimeBase::TimeT get_timestamp();
+
 #endif /* LOBBY_H */

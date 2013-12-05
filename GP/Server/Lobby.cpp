@@ -22,7 +22,7 @@
  
 
 
-TimeBase::TimeT get_timestamp()
+TimeBase::TimeT Lobby::get_timestamp()
 {
   TimeBase::TimeT retval;
   ACE_hrtime_t t = ACE_OS::gethrtime ();
@@ -64,6 +64,17 @@ void Lobby::unbind_user_node( GP::User_Id id )
     ACE_TEXT ("(%t|%T) Lobby::unbind_user_node (%d)\n"),id));
   AMH_User_Node_i* user_node =  this->user_node_map_[id];
   this->platform_->deactive_user_node(user_node);
+}
+
+void Lobby::message( GP::Room_Id room_id, const char* msg )
+{
+  for (User_Node_Map::iterator it = user_node_map_.begin();
+    it != user_node_map_.end();
+    ++it)
+  {
+     AMH_User_Node_i* user_node  = it->second;
+     user_node->reply_message(msg);
+  }
 }
 
 

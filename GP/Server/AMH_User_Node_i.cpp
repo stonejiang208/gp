@@ -18,9 +18,11 @@
 #include "Options.h"
  
 
-AMH_User_Node_i::AMH_User_Node_i(::GP::User_Id a_id)
-  :id_ (a_id)
+AMH_User_Node_i::AMH_User_Node_i(GP::User_Id user_id,GP::Client_Node_ptr client_node)
+  :id_ (user_id)
+  ,client_node_ (GP::Client_Node::_duplicate(client_node))
 {
+  
   ACE_DEBUG ((LM_DEBUG,
     ACE_TEXT ("(%t|%T) AMH_User_Node_i::AMH_User_Node_i(%d)\n"),id_));
 }
@@ -42,7 +44,8 @@ void AMH_User_Node_i::message(
     a_id,a_message));
 
  _tao_rh->message();  
-
+ // send message by lobby
+ LOBBY::instance()->message (a_id,a_message);
 }
 
 
@@ -74,6 +77,19 @@ void AMH_User_Node_i::leave_room(
   
   _tao_rh->leave_room();
  
+}
+
+void AMH_User_Node_i::reply_message( const char* msg )
+{
+  try
+  {
+    GP::Message_Info_var info = new GP::Message_Info();
+    info->source_time = Lobby::get_timestamp();
+    this->client_node_->message(this->id_,msg,info.in());
+  }
+  catch (CORBA::Exception&)
+  {
+  }
 }
 
 

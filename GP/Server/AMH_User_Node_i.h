@@ -14,12 +14,12 @@
 
 #include "User_NodeS.h"
 #include <string>
-
+#include "Game-Platform/Client_NodeC.h"
 class AMH_User_Node_i 
   : virtual public POA_GP::AMH_User_Node
 {
 public:
-  AMH_User_Node_i( ::GP::User_Id a_id);
+  AMH_User_Node_i(GP::User_Id user_id,GP::Client_Node_ptr client_node);
   virtual ~AMH_User_Node_i();
   virtual void message (
     GP::AMH_User_NodeResponseHandler_ptr _tao_rh,
@@ -37,9 +37,11 @@ public:
   virtual void quit (
     GP::AMH_User_NodeResponseHandler_ptr _tao_rh
     );
-  
+public:
+  void reply_message (const char* msg);
 private:
-  GP::User_Id  id_;
+  GP::User_Id          id_;
+  GP::Client_Node_var  client_node_;
 };
 
 

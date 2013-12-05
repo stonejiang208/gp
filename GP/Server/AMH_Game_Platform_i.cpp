@@ -67,7 +67,8 @@ void AMH_Game_Platform_i::create_user(
       ACE_TEXT ("(%t|%T) AMH_Game_Platform_i::create_user ()\n")));
   CORBA::ULong user_id  = ACE::hash_pjw("user_uuid");
 
-  AMH_User_Node_i* user_node_impl = new AMH_User_Node_i (user_id);
+  AMH_User_Node_i* user_node_impl =
+    new AMH_User_Node_i (user_id,a_client_node);
   PortableServer::ServantBase_var servant(user_node_impl);
 
   PortableServer::ObjectId_var id =
