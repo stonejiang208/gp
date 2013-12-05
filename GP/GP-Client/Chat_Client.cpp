@@ -15,8 +15,7 @@
 #include <stdio.h>
 
 
-Chat_Client::Chat_Client()
-	
+Chat_Client::Chat_Client()	
 {
 	this->impl_ = new Chat_Client_Impl();
 }
@@ -60,6 +59,16 @@ int Chat_Client::send_message( int x, const char* msg )
 int Chat_Client::send_data( int x, const void* data, size_t length )
 {
 	return this->impl_->send_data(x,data,length);; 
+}
+
+void Chat_Client::listener( Chat_Listener* l )
+{
+  this->impl_->listener(l);
+}
+
+Chat_Listener* Chat_Client::listener( void )
+{
+  return this->impl_->listener();
 }
 
  

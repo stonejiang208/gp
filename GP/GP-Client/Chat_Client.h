@@ -27,7 +27,8 @@ public:
   int quit();
   int send_message(int, const char* msg);
   int send_data(int, const void* data, size_t length);
-  
+  void listener(Chat_Listener* l);
+  Chat_Listener* listener(void);
  
  
 private:
