@@ -21,6 +21,8 @@ class AMH_User_Node_i
 public:
   AMH_User_Node_i(GP::User_Id user_id,GP::Client_Node_ptr client_node);
   virtual ~AMH_User_Node_i();
+
+  // client->lobby
   virtual void message (
     GP::AMH_User_NodeResponseHandler_ptr _tao_rh,
     ::GP::Room_Id a_id,
@@ -38,6 +40,7 @@ public:
     GP::AMH_User_NodeResponseHandler_ptr _tao_rh
     );
 public:
+  // lobby->client
   void reply_message (const char* msg);
 private:
   GP::User_Id          id_;

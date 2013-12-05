@@ -36,16 +36,16 @@ AMH_User_Node_i::~AMH_User_Node_i()
 
 void AMH_User_Node_i::message(
   GP::AMH_User_NodeResponseHandler_ptr _tao_rh, 
-  ::GP::Room_Id a_id, 
+  ::GP::Room_Id a_room, 
   const char * a_message )
 {
   ACE_DEBUG ((LM_DEBUG,
     ACE_TEXT ("(%t|%T) AMH_User_Node_i::message(%d,%s)\n"),
-    a_id,a_message));
+    a_room,a_message));
 
  _tao_rh->message();  
  // send message by lobby
- LOBBY::instance()->message (a_id,a_message);
+ LOBBY::instance()->send_message_to_room (a_room,a_message);
 }
 
 
@@ -62,21 +62,16 @@ void AMH_User_Node_i::enter_room(
   GP::AMH_User_NodeResponseHandler_ptr _tao_rh, 
   ::GP::Room_Id new_room_id )
 {
-
   ACE_DEBUG ((LM_DEBUG,
-    ACE_TEXT ("(%t|%T) AMH_User_Node_i::enter_room (%d)\n"),new_room_id));
-    
+    ACE_TEXT ("(%t|%T) AMH_User_Node_i::enter_room (%d)\n"),new_room_id));    
 
-  _tao_rh->enter_room();
- 
+  _tao_rh->enter_room(); 
 }
 
 void AMH_User_Node_i::leave_room( 
   GP::AMH_User_NodeResponseHandler_ptr _tao_rh)
-{
-  
-  _tao_rh->leave_room();
- 
+{  
+  _tao_rh->leave_room(); 
 }
 
 void AMH_User_Node_i::reply_message( const char* msg )
@@ -85,7 +80,7 @@ void AMH_User_Node_i::reply_message( const char* msg )
   {
     GP::Message_Info_var info = new GP::Message_Info();
     info->source_time = Lobby::get_timestamp();
-    this->client_node_->message(this->id_,msg,info.in());
+    this->client_node_->message(this->id_,msg,info.in());    
   }
   catch (CORBA::Exception&)
   {

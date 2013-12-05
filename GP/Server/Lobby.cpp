@@ -66,7 +66,7 @@ void Lobby::unbind_user_node( GP::User_Id id )
   this->platform_->deactive_user_node(user_node);
 }
 
-void Lobby::message( GP::Room_Id room_id, const char* msg )
+void Lobby::send_message_to_room( GP::Room_Id room_id, const char* msg )
 {
   for (User_Node_Map::iterator it = user_node_map_.begin();
     it != user_node_map_.end();

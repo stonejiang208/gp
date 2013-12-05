@@ -46,7 +46,7 @@ public:
   void unbind_user_node (GP::User_Id id);
 
 public:
-  void message (GP::Room_Id room_id, const char* msg);
+  void send_message_to_room (GP::Room_Id room_id, const char* msg);
 private:
   AMH_Game_Platform_i*   platform_;
   User_Node_Map          user_node_map_;
