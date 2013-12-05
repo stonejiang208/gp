@@ -1,3 +1,12 @@
-project(test):aceexe{
-
+project(test):namingexe,messaging{
+  exename = test
+  exeout = $(GP_ROOT)/lib
+  libpaths += $(GP_ROOT)/lib
+  includes += $(GP_ROOT) 
+  includes += .
+  includes += $(GP_ROOT)/Game-Platform  
+  libs  += Game_Platform   
+  macros += JSON_IS_AMALGAMATION	
+  IDL_Files{
+  }
 }
