@@ -19,15 +19,16 @@
  
 
 AMH_User_Node_i::AMH_User_Node_i(::GP::User_Id a_id)
+  :id_ (a_id)
 {
   ACE_DEBUG ((LM_DEBUG,
-    ACE_TEXT ("(%t|%T) AMH_User_Node_i::AMH_User_Node_i()\n")));
+    ACE_TEXT ("(%t|%T) AMH_User_Node_i::AMH_User_Node_i(%d)\n"),id_));
 }
 
 AMH_User_Node_i::~AMH_User_Node_i()
 {
   ACE_DEBUG ((LM_DEBUG,
-    ACE_TEXT ("(%t|%T) AMH_User_Node_i::~AMH_User_Node_i()\n")));
+    ACE_TEXT ("(%t|%T) AMH_User_Node_i::~AMH_User_Node_i(%d)\n"),id_));
 }
 
 
@@ -50,7 +51,7 @@ void AMH_User_Node_i::quit( GP::AMH_User_NodeResponseHandler_ptr _tao_rh )
   ACE_DEBUG ((LM_DEBUG,
     ACE_TEXT ("(%t|%T) AMH_User_Node_i::quit ()\n")));
   _tao_rh->quit();
-   
+  LOBBY::instance()->unbind_user_node(this->id_);
 }
 
 

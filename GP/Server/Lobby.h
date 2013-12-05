@@ -17,7 +17,7 @@
 #include "tao/PortableServer/POAC.h"
 #include "CommonC.h"
 #include "Server_NodeC.h"
-
+#include "User_NodeC.h"
 #include <map>
 #include <list>
 
@@ -25,9 +25,9 @@ class AMH_Game_Platform_i;
 class AMH_User_Node_i;
 class AMH_Platform_Node_i;
 
+typedef std::map<GP::User_Id, AMH_User_Node_i*> User_Node_Map;
 
-typedef std::map<GP::User_Id, AMH_User_Node_i*> Player_Map;
-typedef std::map<GP::Room_Id, Player_Map*> Room_Map;
+typedef std::map<GP::Room_Id, User_Node_Map*> Room_Map;
 typedef std::list<int > My_List;
 typedef std::map<GP::Location_Id, ::GP::Server_Node_ptr> Bomb_Server_Map; 
 typedef std::map<GP::Room_Id, ::GP::Server_Node_ptr> Room_Server_Map; 
@@ -39,9 +39,13 @@ public:
   Lobby();
   virtual ~Lobby();
  
-
+public:
+  void set_platform (AMH_Game_Platform_i* p);
+  void bind_user_node (GP::User_Id id, AMH_User_Node_i* user_node);
+  void unbind_user_node (GP::User_Id id);
 private:
   AMH_Game_Platform_i*   platform_;
+  User_Node_Map          user_node_map_;
 };
 
 typedef ACE_Singleton<Lobby, ACE_Null_Mutex> LOBBY;

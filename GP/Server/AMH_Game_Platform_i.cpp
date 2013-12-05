@@ -30,6 +30,7 @@ AMH_Game_Platform_i::AMH_Game_Platform_i()
   ACE_DEBUG ((LM_DEBUG,
     ACE_TEXT ("(%t|%T) AMH_Game_Platform_i::AMH_Game_Platform_i()\n")));
   ACE_OS::srand((u_int) ACE_OS::time (0));
+  LOBBY::instance()->set_platform(this);
 }
 
 AMH_Game_Platform_i::~AMH_Game_Platform_i()
@@ -74,6 +75,9 @@ void AMH_Game_Platform_i::create_user(
   CORBA::Object_var object = this->poa_->id_to_reference (id.in());
   GP::User_Node_var user_node = GP::User_Node::_narrow (object.in());
   _tao_rh->create_user (user_node.in());
+
+  LOBBY::instance()->bind_user_node (user_id,user_node_impl);
+
 }
 
 void AMH_Game_Platform_i::finalize()
@@ -81,21 +85,10 @@ void AMH_Game_Platform_i::finalize()
 }
 
 
-#if 0
-void AMH_Game_Platform_i::power_on( GP::AMH_Game_PlatformResponseHandler_ptr _tao_rh )
+
+void AMH_Game_Platform_i::deactive_user_node( AMH_User_Node_i* user_node )
 {
-  ACE_DEBUG ((LM_DEBUG,
-    ACE_TEXT ("(%t|%T) AMH_Game_Platform_i::power_on ()\n")));
-  CORBA::ULong user_id  = 0;
-  AMH_User_Node_i* user_node_impl = new AMH_User_Node_i (user_id);
-  PortableServer::ServantBase_var servant(user_node_impl);
-
-  PortableServer::ObjectId_var id =
-    this->poa_->activate_object ( user_node_impl);
-  CORBA::Object_var object = this->poa_->id_to_reference (id.in());
-  GP::User_Node_var user_node = GP::User_Node::_narrow (object.in());
-   _tao_rh->login(user_node.in());
+  PortableServer::ObjectId_var oid =
+    this->poa_->servant_to_id(user_node);
+  this->poa_->deactivate_object(oid);
 }
-
-
-#endif 

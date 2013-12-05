@@ -42,8 +42,8 @@ public:
 
   /// Cleanup state for shutdown.
   void finalize();
-  void deactivate_player(AMH_User_Node_i* p);
-  void deactivete_platform(AMH_Platform_Node_i* p);
+  void deactive_user_node  (AMH_User_Node_i* user_node);
+  void deactivete_platform (AMH_Platform_Node_i* p);
 private:
   CORBA::ORB_var orb_;
   PortableServer::POA_var poa_;

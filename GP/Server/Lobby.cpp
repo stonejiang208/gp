@@ -46,6 +46,29 @@ Lobby::~Lobby()
    
 }
 
+void Lobby::set_platform( AMH_Game_Platform_i* p )
+{
+  this->platform_ = p;
+}
+
+void Lobby::bind_user_node( GP::User_Id id, AMH_User_Node_i* user_node )
+{
+  ACE_DEBUG ((LM_DEBUG,
+    ACE_TEXT ("(%t|%T) Lobby::bind_user_node (%d)\n"),id));
+  this->user_node_map_[id] =user_node;
+}
+
+void Lobby::unbind_user_node( GP::User_Id id )
+{
+  ACE_DEBUG ((LM_DEBUG,
+    ACE_TEXT ("(%t|%T) Lobby::unbind_user_node (%d)\n"),id));
+  AMH_User_Node_i* user_node =  this->user_node_map_[id];
+  this->platform_->deactive_user_node(user_node);
+}
+
+
+
+
 
 
 

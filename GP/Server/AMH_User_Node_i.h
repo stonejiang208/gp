@@ -37,7 +37,9 @@ public:
   virtual void quit (
     GP::AMH_User_NodeResponseHandler_ptr _tao_rh
     );
-    
+  
+private:
+  GP::User_Id  id_;
 };
 
 
