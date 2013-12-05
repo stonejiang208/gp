@@ -30,7 +30,7 @@ public:
 public:
   virtual void create_user (
     GP::AMH_Game_PlatformResponseHandler_ptr _tao_rh,
-    const char * user_uuid
+    ::GP::Client_Node_ptr a_client_node
     );
 
 public:
