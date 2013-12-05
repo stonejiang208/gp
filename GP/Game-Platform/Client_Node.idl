@@ -14,7 +14,7 @@
 #include "Common.idl"
 module GP
 {
-  // this interface will be implemented @ client 
+  // this object will be implemented @ client 
   interface Client_Node
   {
     oneway void  message(

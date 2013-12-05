@@ -21,7 +21,7 @@ module GP
 
   interface Game_Platform
   {
-    User_Node create_user(in string user_uuid);
+    User_Node create_user(in Client_Node a_client_node);
     //todo:
     //application  
   };

@@ -94,8 +94,10 @@ void Chat_Client_Impl::shutdown()
  this->orb_task_.shutdown();
 }
 
+//
 int Chat_Client_Impl::join( const char* nick_name )
 {
+  // to fixed: split the function to many more little functions
   try 
   {
     CORBA::Object_var naming_context_object =
@@ -120,9 +122,11 @@ int Chat_Client_Impl::join( const char* nick_name )
       child_poa_->activate_object (client_impl);
     CORBA::Object_var object_player =
       child_poa_->id_to_reference (id.in());
-    GP::Client_Node_var client = GP::Client_Node::_unchecked_narrow(object_player.in());
+    GP::Client_Node_var client = 
+      GP::Client_Node::_unchecked_narrow(object_player.in());
 
-    
+    user_node_ = game->create_user(client.in());
+
   }
   catch (CORBA::Exception &ex)
   {

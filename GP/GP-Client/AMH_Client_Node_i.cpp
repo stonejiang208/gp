@@ -15,8 +15,7 @@
 #include "Chat_Client_Impl.h"
 
 #include <stdio.h>
-
-
+  
 void AMH_Client_Node_i::message(
   GP::AMH_Client_NodeResponseHandler_ptr _tao_rh,
  ::GP::User_Id sender,

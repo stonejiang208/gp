@@ -14,10 +14,13 @@
 #include "Common.idl"
 module GP
 {
+  // this object will be implemented @ server
   interface User_Node
   {
     void message(in Room_Id a_id,
                  in string a_message);
+
+
     void enter_room(in Room_Id new_room_id);
     void leave_room();
     void quit();     
