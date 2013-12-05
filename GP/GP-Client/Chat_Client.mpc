@@ -10,9 +10,9 @@
 
 
 
-project(GP_Client):taolib,orbsvcsexe,portableserver,naming,anytypecode,bidir_giop,messaging{
+project(GP_Client):taolib,orbsvcsexe,naming,anytypecode,bidir_giop,messaging{
    sharedname   = GP_Client
-  dynamicflags = GP_CLIENT_BUILD_DLL
+   dynamicflags = GP_CLIENT_BUILD_DLL
    specific(vc9,vc10,vc11) {
      useofmfc=2
    }

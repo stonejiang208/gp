@@ -62,22 +62,8 @@ int Chat_Client::send_data( int x, const void* data, size_t length )
 	return this->impl_->send_data(x,data,length);; 
 }
 
-void Chat_Client::listener( Chat_Listener* l )
-{
-	this->impl_->listener(l);
-}
+ 
 
-Chat_Listener* Chat_Client::listener( void )
-{
-	 return this->impl_->listener();
-}
+ 
 
-Room_List Chat_Client::get_room_list(int parent_id)
-{
-  return this->impl_->get_room_list(parent_id);
-}
-
-int Chat_Client::enter_room( int new_room )
-{
-  return this->impl_->enter_room(new_room);
-}
+ 

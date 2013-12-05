@@ -27,10 +27,9 @@ public:
   int quit();
   int send_message(int, const char* msg);
   int send_data(int, const void* data, size_t length);
-  int enter_room(int new_room);
-  void listener(Chat_Listener* l);
-  Chat_Listener* listener(void);
-  Room_List get_room_list(int parent_id);
+  
+ 
+ 
 private:
   Chat_Client_Impl* impl_;
 };

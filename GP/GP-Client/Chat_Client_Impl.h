@@ -45,8 +45,7 @@ public:
 	int send_data(int, const void* data, size_t length);
 	void listener(Chat_Listener* l);
 	Chat_Listener* listener(void);
-  int enter_room(int new_room);
-  Room_List get_room_list(int parent_id);  
+  
 private:
 	Chat_Listener* listener_;
 	CORBA::ORB_var orb_;

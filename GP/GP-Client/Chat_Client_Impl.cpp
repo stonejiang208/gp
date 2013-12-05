@@ -122,13 +122,7 @@ int Chat_Client_Impl::join( const char* nick_name )
       child_poa_->id_to_reference (id.in());
     GP::Client_Node_var client = GP::Client_Node::_unchecked_narrow(object_player.in());
 
-    GP::Login_Param_var param = new GP::Login_Param();
-    param->key.length(0);
-    param->product_id = 0;
-    param->vendor_id = 0;
-
-    this->user_node_ = game->login(param.in(),
-      client.in(),nick_name,"pwd");	  
+    
   }
   catch (CORBA::Exception &ex)
   {
@@ -190,40 +184,3 @@ Chat_Listener* Chat_Client_Impl::listener( void )
   return this->listener_;
 }
 
-Room_List Chat_Client_Impl::get_room_list(int parent_id)
-{
-  Room_List my_list;
-  try
-  {    
-    GP::Room_List_var listv =this->user_node_->get_room_list(parent_id);     
-    
-    for(CORBA::ULong i = 0;
-      i < listv->length();
-      ++i)
-    {
-      ACE_DEBUG ((LM_DEBUG,
-        ACE_TEXT ("(%t|%T) room list %d, %d\n"),
-        i,listv[i]));
-      my_list.push_back(listv[i]);
-    }
-  }
-  catch (const CORBA::Exception& ex)
-  {
-    ex._tao_print_exception ("get_room_list");
-  }
-  return my_list;
-}
-
-int Chat_Client_Impl::enter_room( int new_room )
-{
-  try
-  {    
-   this->user_node_->enter_room(new_room);     
-  }
-  catch (const CORBA::Exception& ex)
-  {
-    ex._tao_print_exception ("get_room_list");
-    return -1;
-  }
-  return 0;
-}
