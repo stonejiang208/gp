@@ -86,15 +86,3 @@ int GP_Application::send_message( int x, const char* msg )
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
