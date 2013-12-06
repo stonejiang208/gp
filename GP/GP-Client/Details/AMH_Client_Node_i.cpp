@@ -11,8 +11,8 @@
 
 
 #include "AMH_Client_Node_i.h"
-#include "Chat_Listener.h"
-#include "Chat_Client_Impl.h"
+#include "../Chat_Listener.h"
+ 
 
 #include <stdio.h>
   
@@ -24,14 +24,12 @@ void AMH_Client_Node_i::message(
 {
    _tao_rh->message();
    printf (" AMH_Client_Node_i::message(%s)\n",a_message);
-   Chat_Listener* l = this->client_->listener();
-   if (l)
-   {
-     l->on_message(0,sender,a_message);
-   }
+   
+    client_->on_message(0,sender,a_message);
+    
 }
 
-AMH_Client_Node_i::AMH_Client_Node_i( Chat_Client_Impl* client )
+AMH_Client_Node_i::AMH_Client_Node_i( Chat_Listener* client )
   :client_ (client)
 {
 

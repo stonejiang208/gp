@@ -14,12 +14,12 @@
 
 #include "Client_NodeS.h"
 
-class Chat_Client_Impl;
+class Chat_Listener;
 
 class AMH_Client_Node_i : virtual public POA_GP::AMH_Client_Node
 {
 public:
-  AMH_Client_Node_i(Chat_Client_Impl* client);
+  AMH_Client_Node_i(Chat_Listener* client);
 
   virtual void message (
     GP::AMH_Client_NodeResponseHandler_ptr _tao_rh,
@@ -29,7 +29,7 @@ public:
     );
 
 private:
-  Chat_Client_Impl* client_;
+   Chat_Listener* client_;
 };
 
 #endif /* AMH_CLIENT_NODE_I_H */

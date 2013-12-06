@@ -1,6 +1,6 @@
 // -*- MPC -*- 
 //===========================================================================
-//* Time-stamp: <2013-11-24 14:15:53 by jiangtao> 
+//* Time-stamp: <2013-12-06 10:30:58 by jiangtao> 
 
 // @file GP_Client.mpc
 // * $Id: GP_Client.mpc 2013/03/13 06:21:08 jiangtao Exp $
@@ -24,12 +24,14 @@ project(GP_Client):taolib,orbsvcsexe,naming,anytypecode,bidir_giop,messaging{
   dllout = $(GP_ROOT)/lib
   libout = $(GP_ROOT)/lib
   libpaths += $(GP_ROOT)/lib
-  
-  includes += $(GP_ROOT)/Game-Platform
+    
+  includes += $(GP_ROOT)/Game-Platform 
+  includes += ./Details
   libs  += Game_Platform
- 
-   IDL_Files{
-	   
+  IDL_Files{	   
    }
-
+  Source_Files {
+    *.cpp
+	./Details/*.cpp
+ }
 }

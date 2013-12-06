@@ -24,6 +24,7 @@ public:
   Chat_Listener();
   virtual ~Chat_Listener();
   virtual void on_message(int, int sender, const char* message) = 0;
+  virtual void on_system_message (int error_code, const char* desc) = 0;
   virtual void on_data (int, int sender, const void* data, size_t length) = 0;
   virtual void online() = 0;
   virtual void offline() = 0;
