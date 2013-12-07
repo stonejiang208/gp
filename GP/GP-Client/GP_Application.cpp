@@ -80,8 +80,7 @@ void GP_Application::on_system_message( int error_code, const char* desc )
 
 int GP_Application::send_message( int x, const char* msg )
 {
-  return this->impl_->send_message(x,msg);
-  
+  return this->impl_->send_message(x,msg);  
 }
 
 

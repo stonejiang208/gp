@@ -39,5 +39,4 @@ public:
 private:
   Details::Application*  impl_;
 };
-
-#endif /* GP_APPLICATION_H */
+ #endif /* GP_APPLICATION_H */
